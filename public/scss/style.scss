@@ -1,0 +1,68 @@
+@import "./config";
+@import "./mixins";
+@import "./functions";
+@import "./home";
+@import "./menu";
+@import "./about";
+@import "./projects";
+@import "./contact";
+@import "./responsive";
+
+
+body{
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: selectFontWeight(regular);
+    background: $primary-color;
+    color: setTextColor($primary-color);
+}
+a{
+    text-decoration: none;
+    color: $para-text-color;
+    @include transitionEase;
+}
+ul{
+    list-style:none;
+}
+h1,h2,h3{
+    color: setTextColor($primary-color);
+    font-weight: selectFontWeight(medium);
+}
+img{
+    width: 100%;
+    max-width: 100%;
+}
+.text-secondary{
+    color: $brand-color;
+}
+.header{
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    padding: 1rem;
+}
+main{
+    height: 100%;
+    width: 100%;
+}
+.social-icons{
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+
+    a{
+        padding-right: 0.8rem;
+
+        &:hover{
+            color: $brand-color;
+        }
+    }
+}
+
+.footer{
+    position: fixed;
+    bottom: 0.4rem;
+    right: 1rem;
+    font-size: 1rem;
+    text-align: right;
+}

@@ -1,0 +1,96 @@
+.menu-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 111;
+  height: 20px;
+  width: 28px;
+  cursor: pointer;
+  @include transitionEase;
+
+  &__burger {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    width: 28px;
+    height: 3px;
+    background: setTextColor($primary-color);
+    @include transitionEase;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 28px;
+      top: -8px;
+      background: setTextColor($primary-color);
+    }
+    &::after {
+      top: 8px;
+      width: 20px;
+    }
+    &.open {
+      transform: rotate(720deg);
+      background: transparent;
+
+      &::before {
+        transform: rotate(45deg) translate(5px, 8px);
+      }
+      &::after {
+        transform: rotate(-45deg) translate(3px, -7px);
+        width: 28px;
+      }
+    }
+  }
+}
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba($primary-color, 0.98);
+  display: grid;
+  place-items: center;
+  transform: translateY(-100%);
+  @include transitionEase;
+
+  .menu-nav {
+    text-align: center;
+    font-size: 1.6rem;
+
+    &__item {
+      margin: 2rem 0;
+      transform: translateX(150%);
+      opacity: 0;
+      @include transitionEase;
+      
+      &.visible {
+          transform: translateX(0);
+          opacity: 1;
+          @include transitionEase;
+      }
+    }
+    &__link {
+      letter-spacing: 1px;
+      &.active{
+        color: $brand-color !important;
+        @include textShadow;
+      }
+
+      &:hover {
+        color: $brand-color;
+      }
+    }
+  }
+  &.down {
+    transform: translateY(0);
+  }
+}
+
+@for $i from 1 through 4 {
+  .menu-nav__item.visible:nth-child(#{$i}) {
+    transition-delay: ($i * 0.2s);
+  }
+}

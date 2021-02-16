@@ -1,0 +1,11 @@
+@function selectFontWeight($weight-name) {
+    @return map-get($font-weight,$weight-name);
+}
+
+@function setTextColor($color){
+    @if (lightness($color) > 40%){
+        @return #000;
+    }@else{
+        @return #fff
+    }
+}

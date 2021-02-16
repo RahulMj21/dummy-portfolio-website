@@ -1,0 +1,31 @@
+@mixin transitionEase {
+    transition: all 0.4s ease-in-out;
+}
+
+@mixin textShadow {
+    text-shadow: 1px 1px 5px rgba($brand-color,0.4);
+}
+@mixin bgImageSetup($imagePath) {
+    background: linear-gradient(
+      to right,
+      rgba($primary-color, 0.9),
+      rgba($primary-color, 0.3)
+    ),
+    url($imagePath) top center/cover;
+}
+
+@mixin media-md{
+    @media screen and (min-width:768px){
+        @content;
+    }
+}
+@mixin media-lg{
+    @media screen and (min-width:1024px){
+        @content;
+    }
+}
+@mixin media-xl{
+    @media screen and (min-width:1600px){
+        @content;
+    }
+}

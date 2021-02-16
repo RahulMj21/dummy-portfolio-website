@@ -1,0 +1,99 @@
+.projects{
+    padding-bottom: 2rem;
+
+    &__img{
+        height: 30vh;
+        width: 100%;
+        @include bgImageSetup("../images/model-1.jpg");
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        
+        .text-secondary{
+            font-size: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+    
+    &__items{
+        width: 60vw;
+        margin: 2rem auto 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+    }
+    &__item{
+        position: relative;
+        border-bottom: 5px solid $brand-color;
+        overflow: hidden;
+        cursor: pointer;
+        @include transitionEase;
+
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 0;
+            width: 100%;
+            background: rgba($brand-color,0.9);
+            @include transitionEase;
+        }
+        &:hover {
+            &::after{
+                height: 100%;
+            }
+
+            .projects__btns{
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.5s;
+            }
+        }
+
+    }
+
+    &__btns{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        align-items: center;
+        justify-items: center;
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(50px);
+        @include transitionEase;
+    }
+    &__btn{
+        font-size: 1.2rem;
+        font-weight: selectFontWeight(bold);
+        letter-spacing: 1px;
+        color: $primary-color;
+        i{
+            margin-right: 10px;
+        }
+
+        &:hover{
+            color: setTextColor($primary-color);
+        }
+    }
+
+    
+
+    .social-icons{
+        display: flex;
+        flex-direction: column;
+        
+        a:not(:last-child){
+            margin-bottom: 0.8rem;
+        }
+    }
+    .footer{
+        transform: rotate(90deg) translate(-3rem,-4rem);
+    }
+}
